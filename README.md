@@ -1,6 +1,6 @@
 # 8 semestras
 
-- [Programavimas duomenų bazių aplinkoje](https://edriskus.github.io/8-semestras/Programavimas duomenų bazių aplinkoje/kontrolinis)
+- [Programavimas duomenų bazių aplinkoje](https://edriskus.github.io/8-semestras/Programavimas%20duomen%C5%B3%20bazi%C5%B3%20aplinkoje/kontrolinis)
 
 ```none
 "THE BEER-WARE LICENSE" (Revision 42):
