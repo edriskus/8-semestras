@@ -330,13 +330,81 @@
     - Transference (outsource or insure) 
     - Retention (accept and budget) 
 - Saugumo politika
-- Auditas
+  - Policies **define** appropriate **behavior**.
+  - Policies set the stage in terms of what **tools** and **procedures** are needed.
+  - Policies communicate a **consensus**.
+  - Policies provide a **foundation** for HR action in response to inappropriate behavior.
+  - Policies may help **prosecute** cases.
+- Auditas - organizacijos patikrinimas informacinio saugumo užtikrinimo lygiu 
 - Saugumo komanda
-- Incidentų valdymas
+  - Choose the policy development **team**.
+  - Designate a person or body to serve as the official **policy interpreter**.
+  - Decide on the **scope and goals** of the policy.
+    - Scope should be a statement about who is covered by the policy.
+  - Decide on **how specific** to make the policy.
+    - not meant to be a detailed implementation plan
+    - don’t include facts which change frequently
+- Incidentų valdymas - Incidentą mes suprantame kaip įvykį, darantį įtaką kompiuterinės ir tinklų sistemos saugumui. 
+  - RIP – reagavimo į incidentus planas
+    - RIP pradeda galioti tada, kai pasibaigia Veiklos tęstinumo plano įgaliojimai
+  - RIG – reagavimo į incidentus grupė (CERT - Computer Emergency Readiness Team):
+    - RIG yra organizacijos saugumo incidento branduolys 
+    - Atsakinga už incidento valdymą ir turi įgaliojimus daryti viską, ko reikia sprendžiant problemą ir vykdant organizacijos tikslus, kilus incidentui 
+    - Komandą turi sudaryti skirtingų sričių darbuotojai, turintys stiprių vadovavimo įgūdžių. 
+    - Komanda turi būti pasiruošusi bet kada spręsti incidentą. 
 
 ## Fizinė sauga, atsarginės kopijos, sistemų atstatymas
 
-- ...
+- Atsarginė kopija (backup) – tai duomenų kopija, skirta duomenims atstatyti juos pra-radus ar sugadinus. Kopija kuriama duomenų laikmenoje.
+- Reikalavimai atsarginei kopijai:
+  - Informacijos saugojimo patikimumas (kopijos saugojimo vieta ir duomenų laikmenos yra patikimos, saugomos kelios kopijos, keliose vietose)
+  - Kopijavimo procedūra turi būti paprasta (pageidautinai automatizuota)
+  - Procedūra turi nereikalauti stabdyti funkcionuojančios sistemos (arba reikalaujanti stabdyti labai trumpam laiko intervalui)
+- Atsarginiu kopiju kurimo metodai
+  - Atvaizdas - bit-to-bit
+  - Rinkmenų kopijos - kuriamos, kai pagrindinis informacinės sistemos duomenų šaltinis yra įvairios bylos, o ne DBVS. 
+  - Pilnų atsarginių kopijų kūrimas - apima visą informacinę sistemą ir joje saugomus duomenis 
+  - Diferencinis atsarginių kopijų kūrimas - kopijuojamos visos rinkmenos, kurios buvo pakeistos po paskutinės visos atsarginės kopijos padarymo
+  - Papildomasis atsarginių kopijų kūrimas - Skirtingai nuo diferencinio metodo, papildomojo kopijavimo metu nauja rinkmenos versija ne pakeičiama senąja, o yra įrašoma į laikmeną nepriklausomai. 
+  - „Šaltos“ duomenų bazių rezervinės kopijos - daromos uždarant vartotojų priėjimą prie duomenų bazės. 
+  - „Karštos“ duomenų bazių rezervinės kopijos - kuriamos nestabdant duomenų bazės. 
+- Atsargines kopijos laikmenos
+  - **Magnetinė juosta**
+    - geras talpos ir kainos santykisu 
+    - pagrindinis laikmenos minusas – nuoseklus duomenų nuskaitymo modelis.
+  - **Kietieji diskai**
+    - antri po magnetinių juostų pagal talpos ir kainos santykį; 
+    - patikimumas ir kaina tiesiogiai priklauso nuo naudojamų diskų tipo (IDE, SATA, SCSI) ir prijungimo (pavieniai – stand-alone, RAID ir t. t.).
+  - **Optiniai diskai**
+    - pigi duomenų laikmena, tinkama kopijoms, kurių negalima ateityje trinti arba modifikuoti; pagrindiniai tipai – CD, DVD.
+  - **Keičiamos laikmenos**
+    - daug įvairių tipų duomenų laikmenų, kurios skiriasi tarpusavyje ir talpos parametrais, ir technologine baze (diskelis – floppy, USB raktai, atminties kortelės – Compact-Flash, SecureDigital ir kiti). 
+    - Dažniausiai naudojamos namų vartotojų arba nedidelių duomenų kiekių atsarginėms kopijoms daryti. 
+- Laikmenų rotacijos schemos
+  - Vienkartinio kopijavimo schema - faktiškai nenumato laikmenų rotacijos. 
+  - Paprastos rotacijos schema - Tam tikras laikmenų komplektas naudojamas cikliškai. 
+  - Schema „Senelis, tėvas, sūnus“
+    - kiekvieną dieną kuriamos papildymo arba diferencinės atsarginės kopijos („sūnaus“ l.k.).
+    - Kartą per savaitę kuriamos pilnos atsarginės kopijos (naudojamas „tėvo“ laikmenų komplektas), 
+    - Mėnesio pabaigoje daroma papildoma pilna atsarginė kopija, kuri perduodama į archyvą („senelio“ l. k.). 
+  - Schema „Hanojaus bokštas“
+    - Dažniausiai reikalingi 5 ar 6 rinkmenų komplektai.
+    - Kiekvienas komplektas skirtas savaitiniam ciklui (pagal analogiją su paprasta schema), bet neišimant pilnų kopijų,
+    - bazinės rotacijos schemos viename komplekte (iš minėtų 5-6) yra 1 savaitinė ir 4 dieninės kopijos (diferencinės arba papildymo). 
+  - „10 komplektų“ schema
+    - Keturiasdešimties darbo dienų laikotarpis yra skirstomas į 10 ciklų. 
+    - Kiekvienam komplektui paskirta viena savaitės diena.
+- Atsarginių kopijų saugyklų valdymas
+  - On-line – kopijos saugomos greitai prieinamoje (kelių milisekundžių) duomenų saugojimo laikmenoje, (pvz., kietasis diskas, diskų masyvas arba tinkle esanti duomenų saugykla). Tinka, kai keliami aukšti reikalavimai duomenų atstatymo laikui. Sprendimas nėra labai saugus, nes saugomi duomenys gali būti pažeisti įsilaužimo metu.
+  - Near-line -  pigesnė, tačiau pasižymi mažesniu reakcijos laiku (kelios sekundės ar minutės). Pvz. - magnetinių juostų saugykla, valdoma mechaniniu įrenginiu, kuris prireikus pateikia reikiamą juostą į skaitymo įrenginį.
+  - Off-line – atsarginės kopijos nėra prieinamos naudojant vien kompiuterines valdymo priemones. Tam būtinos žmogaus pastangos. Pvz. – atsarginių kopijų saugojimas tam pritaikytoje nedegioje spintoje. Sprendimas visiškai apsaugo duomenis elektroninio įsilaužimo atveju, tačiau jo nepakanka, jei reikalinga apsauga nuo fizinių grėsmių (vagystės, stichinių nelaimių, gaisro, terorizmo išpuolių), nes tokiu atveju duomenys saugomi toje pačioje vietoje, kaip ir veikianti sistema, ir yra visiškai sunaikinami.
+  - Off-site – atsarginės kopijos saugojimas tam tikroje vietoje, atokiau nuo pastato, kuriame funkcionuoja informacinė sistema. Vieta dažniausiai būna pritaikyta atsarginėms kopijoms laikyti, yra apsaugota nuo fizinių grėsmių. 
+- Business Continuity Planning – **BCP**
+- Disaster Recovery Plan – **DRP**
+- Atstatymo Infrastruktūros tipai
+  - Cold site - neparuosta darbui
+  - Warm site - iranga paruosta, bet neikelti duomenys
+  - Hot site - iranga paruosta su gana naujais duomenimis
 
 ## Operacinių sistemų ir dalykinių programų sauga
 
@@ -374,12 +442,82 @@
 
 ## Teisiniai ir etiniai informacijos saugos aspektai
 
-- ...
+- Dešimt kompiuterinės etikos įsakymų
+  - Nenaudok kompiuterio kenkti kitiems žmonėms.
+  - Netrukdyk kitiems žmonėms dirbti kompiuteriu.
+  - Nesižvalgyk po kitų žmonių kompiuterinius failus.
+  - Nenaudok kompiuterio vagystei.
+  - Nenaudok kompiuterio melagingiems parodymams kurti.
+  - Nekopijuok programinės įrangos, už kurią nesumokėjai.
+  - Nenaudok kitų žmonių kompiuterinių išteklių be leidimo arba atitinkamos kompensacijos.
+  - Nesisavink kitų žmonių intelektinių kūrinių.
+  - Galvok apie tavo kuriamos programos arba sistemos socialines pasekmes.
+  - Visada naudok kompiuterį atsižvelgdamas ir gerbdamas savo aplinkinius. 
+- Įstatymai
+  - Lietuvos Respublikos kibernetinio saugumo įstatymas.
+  - Lietuvos Respublikos asmens duomenų teisinės apsaugos įstatymas.
+  - Lietuvos Respublikos elektroninio parašo įstatymas.
+  - Lietuvos Respublikos elektroninių ryšių įstatymas.
+  - Lietuvos Respublikos valstybės informacinių išteklių įstatymas.
+  - Lietuvos Respublikos autorių teisių ir gretutinių teisių įstatymas.
+- BDAR
+  - Įtvirtintos 2 naujos duomenų subjekto teisės
+    - teisė į AD perkeliamumą;
+    - teisė būti pamirštam.
+  - Privalomas informavimas apie saugumo pažeidimus
+  - Teisė susipažinti su tvarkomais duomenimis
 
 ## Šiuolaikinės technologijos bei susijusios grėsmės
 
-- ...
+- Elektroninis paštas
+  - E-mail vs E-mail client
+  - SPAM
+  - KPK platinimas
+  - Informacijos nutekinimas / Šnipinėjimas
+  - Phishing
+  - Priekabiavimas
+  - Grandininiai laiškai
+  - Hoax virusai
+- Internet
+  - Ar yra nepavojingų vietų?
+  - SQL injekcijos ir Cross-Site-Scripting atakos
+  - Anonimiškumas ir privatumas
+  - Interneto archyvas
+  - Socialiniai tinklai
+  - Debesų kompiuterija
+  - Duomenų saugyklos internete
+  - Naršyklės ir vartotojų veiksmų stebėjimas
+  - Bendravimo ir IP-telefonijos programos
+- Išmanieji telefonai
+  - „Tiesioginis ryšys su pinigine“
+  - KPK
+  - Vartotojų stebėjimas
+  - Žemas apsaugos lygis lyginant su kompiuteriais
+  - Prieinamumas specialiosioms tarnyboms / darbdaviui
 
 ## Įvadas į kriptografiją
 
-- ...
+- Pagrindiniai kriptografijos elementai
+  - Simetriniai algoritmai - vienas slaptas raktas K kurį turi ir siuntėjas ir gavėjas.
+    - One-time pad
+    - Blokiniai - koduojami informacijos blokai (pvz. 64- bit)
+    - Srautiniai - koduojami po vieną bitą
+  - Atviro rakto (asimetriniai) algoritmai
+    - Vienas raktas atviras (public) kitas - slaptas (private)
+    - Reikalavimas: k1 negali būti rastas žinant k2 ir atvirkščiai.
+  - Vienakryptės funkcijos
+    - žinant M lengva rasti C
+    - žinant C sunku atspėti M→”nėra” F-1
+- Klasikinių šifravimo būdų tipai
+  - Steganografija – ne kodavimas o maskavimas
+  - Pakeitimo šifrai – viena raidė keičiama kita
+  - Perstatymo šifrai – keičiama raidės vieta tekste
+    - Monoalfabetiniai – viena raidė keičiama kita, bet visada ta pačia raide (Cezario šifras)
+    - Homofoniniai – viena raidė keičiama keliais simboliais.  (1401 Gausas galvojo kad tai neiššifruojamas kodas)
+    - Poligraminiai – raidžių grupė keičiama kita raidžių grupe.( Playfair 1854, Hill 1929)
+    - Polialfabetiniai šifrai – tai pačiai raidei skirtingi monoalfabetiniai šifrai priklausomai nuo rakto. (Batista 1568, Vigenere 1586 )
+  - Rotorinės mašinos
+    - Automatizuotas kodavimas.
+    - Polialfabetinis šifras su labai ilgu periodu
+    - Periodas 26^n, kur n –rotorių skaičius
+    - Garsioji vokiečių ENIGMA turėjo 3 rotorius su atspindžiu.
