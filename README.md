@@ -2,6 +2,7 @@
 
 ## Egzaminai
 
+- [Modernių duomenų bazių pagrindai](https://edriskus.github.io/8-semestras/Moderni%C5%B3%20duomen%C5%B3%20bazi%C5%B3%20pagrindai/egzaminas)
 - [Informacines Saugos Pagrindai](https://edriskus.github.io/8-semestras/Informacin%C4%97s%20saugos%20pagrindai/egzaminas)
 
 ## Tarpiniai atsiskaitymai
